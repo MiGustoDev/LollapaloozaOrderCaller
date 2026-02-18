@@ -1,4 +1,4 @@
-# Mi Gusto - Sistema de Pedidos
+# Mi Gusto - Llamador de pedidos
 
 Sistema offline de gestión de pedidos para Lollapalooza Buenos Aires.
 
@@ -8,8 +8,6 @@ Sistema offline de gestión de pedidos para Lollapalooza Buenos Aires.
 - **Dos vistas principales**:
   - **Contador**: Gestión de pedidos con botones táctiles grandes
   - **Llamador**: Display vertical optimizado para TV 1080x1920
-
-## Uso
 
 ### Vista Contador
 
@@ -26,27 +24,6 @@ Sistema offline de gestión de pedidos para Lollapalooza Buenos Aires.
   - **A Retirar** (40% inferior - fondo verde)
 - Los números se muestran en grillas de 3 columnas
 - Optimizado para visualización a distancia en TV vertical
-
-## Instalación y Ejecución
-
-```bash
-npm install
-npm run dev
-```
-
-## Compilación
-
-```bash
-npm run build
-```
-
-## Despliegue en PCs Táctiles
-
-1. Clona el repositorio en cada PC
-2. Ejecuta `npm install` y `npm run build`
-3. Usa `npm run preview` o sirve la carpeta `dist` con cualquier servidor web estático
-4. Para la PC conectada a TV: abre la aplicación y cambia a la vista "Llamador"
-5. Configura el navegador en modo pantalla completa (F11)
 
 ## Persistencia de Datos
 
