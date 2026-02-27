@@ -1,38 +1,72 @@
-# Mi Gusto - Llamador de pedidos
+# Mi Gusto - Llamador de pedidos (Lollapalooza Order Caller)
 
-Sistema offline de gestión de pedidos para Lollapalooza Buenos Aires.
+Sistema **offline de gestión y llamado de pedidos** diseñado para los puntos de venta de **Lollapalooza Buenos Aires**, pensado para funcionar sin internet, con interfaz táctil para el contador y una vista optimizada para TV vertical en el sector de retiro.
 
-## Características
-
-- **100% Offline**: Funciona completamente sin conexión a internet usando LocalStorage
-- **Dos vistas principales**:
-  - **Contador**: Gestión de pedidos con botones táctiles grandes
-  - **Llamador**: Display vertical optimizado para TV 1080x1920
+## Demo
 
 ### Vista Contador
 
-1. **Incrementar/Decrementar**: Usa los botones +1 y -1 para ajustar el número del pedido
-2. **Enviar a Llamador**: Presiona el botón amarillo para agregar el pedido actual a "En Preparación"
-3. **Gestionar Pedidos**:
-   - Usa el botón de flecha verde para mover un pedido de "En Preparación" a "A Retirar"
-   - Usa el botón rojo para eliminar un pedido
+![Vista contador](public/assets/Contador.png)
 
 ### Vista Llamador
 
-- Pantalla dividida verticalmente:
-  - **En Preparación** (60% superior - fondo naranja)
-  - **A Retirar** (40% inferior - fondo verde)
-- Los números se muestran en grillas de 3 columnas
-- Optimizado para visualización a distancia en TV vertical
+![Vista llamador](public/assets/Llamador.png)
 
-## Persistencia de Datos
+## Características principales
 
-Todos los datos se guardan automáticamente en LocalStorage del navegador. Los pedidos persisten incluso al recargar la página.
+- **100% offline**
+  - Funciona completamente sin conexión a internet usando `localStorage`.
+  - Los pedidos persisten incluso al recargar la página o cerrar y reabrir el navegador.
 
-## Tecnologías
+- **Dos vistas principales**
+  - **Contador**:
+    - Gestión de pedidos con botones táctiles grandes (+1, -1, Enviar).
+    - Pensado para tablets o pantallas táctiles en el área de armado de pedidos.
+  - **Llamador**:
+    - Display vertical optimizado para TVs 1080x1920.
+    - Enfocado en la experiencia del cliente al momento de retirar.
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- LocalStorage API
+- **Flujo de pedidos**
+  - Incrementar/decrementar el número de pedido actual.
+  - Enviar pedidos a la columna **En Preparación**.
+  - Mover pedidos de **En Preparación** a **A Retirar**.
+  - Eliminar pedidos de cualquiera de las dos listas una vez que se completan.
+
+- **Diseño de la vista Llamador**
+  - Pantalla dividida verticalmente:
+    - **En Preparación** (aprox. 60% superior – fondo naranja).
+    - **A Retirar** (aprox. 40% inferior – fondo verde).
+  - Los números se muestran en grillas de 3 columnas, optimizados para leerse a distancia.
+
+## Arquitectura de la aplicación
+
+- **Entrada múltiple con Vite**
+  - `index.html`: punto de entrada genérico, que resuelve la vista según la URL (`vista=contador` o `vista=llamador`).
+  - `contador.html`: entrada dedicada para la vista de contador.
+  - `llamador.html`: entrada dedicada para la vista de llamador.
+  - Configuradas en `vite.config.ts` usando `rollupOptions.input`.
+
+- **Gestión de estado**
+  - Estado centralizado con `useLocalStorage` para sincronizar:
+    - `contadorActual`
+    - Lista de pedidos **en preparación**
+    - Lista de pedidos **a retirar**
+  - Todas las operaciones (enviar, mover, eliminar) actualizan el estado central y se reflejan en ambas vistas.
+
+## Tecnologías utilizadas
+
+- **Frontend**
+  - React 18
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+  - Iconos de `lucide-react`
+
+- **Almacenamiento**
+  - `localStorage` para persistir números y listas de pedidos en el navegador.
+  
+
+## Desarrolladores
+
+- **[Facu14carrizo](https://github.com/Facu14carrizo)** · [LinkedIn](https://www.linkedin.com/in/facu14carrizo/)
+- **[ramirolacci](https://github.com/ramirolacci)** · [LinkedIn](https://www.linkedin.com/in/ramiro-lacci/)
