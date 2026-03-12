@@ -44,7 +44,7 @@ function App() {
     }));
   };
 
-  const handleEnviar = () => {
+  const handleEnviar = (resetContador: boolean = false) => {
     const nuevoPedido: Pedido = {
       numero: state.contadorActual,
       timestamp: Date.now(),
@@ -53,7 +53,7 @@ function App() {
     setState((prev) => ({
       ...prev,
       aRetirar: [...prev.aRetirar, nuevoPedido],
-      contadorActual: prev.contadorActual + 1,
+      contadorActual: resetContador ? 0 : prev.contadorActual + 1,
     }));
   };
 

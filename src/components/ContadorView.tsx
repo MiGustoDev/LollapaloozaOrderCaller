@@ -7,7 +7,7 @@ interface Props {
   onIncrement: () => void;
   onDecrement: () => void;
   onSetContador: (value: number) => void;
-  onEnviar: () => void;
+  onEnviar: (reset?: boolean) => void;
   onEliminar: (numero: number, lista: 'enPreparacion' | 'aRetirar') => void;
 }
 
@@ -62,7 +62,7 @@ export function ContadorView({
       if (event.key === 'Enter') {
         event.preventDefault();
         if (state.contadorActual > 0) {
-          onEnviar();
+          onEnviar(true);
         }
         return;
       }
@@ -120,7 +120,7 @@ export function ContadorView({
               </div>
 
               <button
-                onClick={onEnviar}
+                onClick={() => onEnviar()}
                 disabled={state.contadorActual === 0}
                 className="w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 disabled:bg-gray-600 disabled:cursor-not-allowed text-gray-900 disabled:text-gray-400 font-bold text-2xl px-12 py-6 rounded-lg transition-all active:scale-95 shadow-lg flex items-center justify-center gap-4"
               >
