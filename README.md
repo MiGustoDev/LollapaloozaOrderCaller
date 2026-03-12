@@ -28,13 +28,11 @@ Sistema **offline de gestión y llamado de pedidos** diseñado para los puntos d
 
 - **Flujo de pedidos**
   - Incrementar/decrementar el número de pedido actual.
-  - Enviar pedidos a la columna **En Preparación**.
-  - Mover pedidos de **En Preparación** a **A Retirar**.
+  - Enviar pedidos a la columna **A Retirar**.
   - Eliminar pedidos de cualquiera de las dos listas una vez que se completan.
 
 - **Diseño de la vista Llamador**
   - Pantalla dividida verticalmente:
-    - **En Preparación** (aprox. 60% superior – fondo naranja).
     - **A Retirar** (aprox. 40% inferior – fondo verde).
   - Los números se muestran en grillas de 3 columnas, optimizados para leerse a distancia.
 
@@ -49,7 +47,6 @@ Sistema **offline de gestión y llamado de pedidos** diseñado para los puntos d
 - **Gestión de estado**
   - Estado centralizado con `useLocalStorage` para sincronizar:
     - `contadorActual`
-    - Lista de pedidos **en preparación**
     - Lista de pedidos **a retirar**
   - Todas las operaciones (enviar, mover, eliminar) actualizan el estado central y se reflejan en ambas vistas.
 
